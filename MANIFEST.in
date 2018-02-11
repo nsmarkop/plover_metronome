@@ -1,0 +1,5 @@
+# UI.
+exclude plover_metronome/*_rc.py
+exclude plover_metronome/*_ui.py
+include plover_metronome/*.ui
+recursive-include plover_metronome/resources *

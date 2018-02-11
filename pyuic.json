@@ -1,0 +1,16 @@
+{
+    "files": [
+        [
+            "plover_metronome/*.qrc",
+            "plover_metronome"
+        ],
+        [
+            "plover_metronome/*.ui",
+            "plover_metronome"
+        ]
+    ],
+    "pyrcc": "pyrcc5",
+    "pyrcc_options": "",
+    "pyuic": "pyuic5",
+    "pyuic_options": "--from-import"
+}
