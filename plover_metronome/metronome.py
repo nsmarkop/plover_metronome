@@ -70,6 +70,20 @@ class Metronome(Tool, Ui_Metronome):
         self.blinker_animation.setStartValue(1.0)
         self.blinker_animation.setEndValue(0.0)
 
+    def set_current_bpm(self, bpm: int):
+        '''
+        Updates the current BPM.
+        '''
+
+        self.current_bpm = bpm
+
+        # Update the the application
+        update_interval = Metronome.bpm_to_interval(self.current_bpm)
+        self.timer.setInterval(update_interval)
+        self.blinker_animation.setDuration(update_interval / 2)
+
+        self.save_state()
+
     '''
     State Management
     '''
@@ -169,7 +183,7 @@ class Metronome(Tool, Ui_Metronome):
 
 
 # For running as standalone. No Plover functionality will work.
-# Can test python `python -m plover_metronome.metronome`.
+# Can test with `python -m plover_metronome.metronome`.
 if __name__ == '__main__':
     APP = QtWidgets.QApplication(sys.argv)
     METRONOME = Metronome(None)
