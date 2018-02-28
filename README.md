@@ -2,6 +2,8 @@
 
 Metronome tool plugin for [Plover](https://github.com/openstenoproject/plover).
 
+![Metronome Screenshot](/images/metronome_screenshot.png)
+
 ## Installation
 
 Download the latest version of Plover for your operating system from the [releases page](https://github.com/openstenoproject/plover/releases). Only versions 4.0.0.dev2 and higher are supported.
@@ -13,10 +15,3 @@ Download the latest version of Plover for your operating system from the [releas
 5. Restart Plover
 
 The same method can be used for updating and uninstalling the plugin.
-
-## Usage
-
-WIP. Development notes:
-
-pyuic5.exe -x metronome.ui -o metronome_ui.py
-pyrcc5.exe resources/resources.qrc -o resources_rc.py
