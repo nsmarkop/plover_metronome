@@ -9,7 +9,7 @@ try:
 except ImportError:
     IS_WINDOWS = False
 
-from PyQt5 import QtWidgets, QtCore, Qt
+from PyQt5 import QtWidgets, QtCore
 
 from plover.gui_qt.tool import Tool
 from plover_metronome.metronome_ui import Ui_Metronome
@@ -44,7 +44,6 @@ class Metronome(Tool, Ui_Metronome):
 
         # Create things
         self.create_metronome_timer()
-        self.create_blinker_animation()
 
         # Restore saved settings and default state
         self.restore_state()
@@ -58,17 +57,6 @@ class Metronome(Tool, Ui_Metronome):
 
         self.timer = QtCore.QTimer()
         self.timer.timeout.connect(self.on_timer)
-
-    def create_blinker_animation(self):
-        '''
-        Creates the state machine for the blinker animation.
-        '''
-
-        effect = Qt.QGraphicsOpacityEffect(self.bpm_blinker)
-        self.bpm_blinker.setGraphicsEffect(effect)
-        self.blinker_animation = Qt.QPropertyAnimation(effect, b'opacity')
-        self.blinker_animation.setStartValue(1.0)
-        self.blinker_animation.setEndValue(0.0)
 
     '''
     State Management
@@ -134,7 +122,6 @@ class Metronome(Tool, Ui_Metronome):
         # Update the the application
         update_interval = Metronome.bpm_to_interval(self.current_bpm)
         self.timer.setInterval(update_interval)
-        self.blinker_animation.setDuration(update_interval / 2)
 
         self.save_state()
 
@@ -147,14 +134,10 @@ class Metronome(Tool, Ui_Metronome):
             self.timer.stop()
             self.is_active = False
             self.metronome_toggle.setText(self.to_active_text)
-
-            # Don't stop the blinker_animation, just let it finish on its own
         else:
             self.timer.start()
             self.is_active = True
             self.metronome_toggle.setText(self.to_inactive_text)
-
-            self.blinker_animation.start()
 
     def on_timer(self):
         '''
@@ -162,10 +145,6 @@ class Metronome(Tool, Ui_Metronome):
         '''
 
         Metronome.make_beep()
-
-        # Toggle the animation off then on to prevent visual lag
-        self.blinker_animation.stop()
-        self.blinker_animation.start()
 
 
 # For running as standalone. No Plover functionality will work.
