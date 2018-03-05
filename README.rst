@@ -23,3 +23,9 @@ Only versions 4.0.0.dev2 and higher are supported.
 5. Restart Plover
 
 The same method can be used for updating and uninstalling the plugin.
+
+Acknowledgements
+----------------
+
+Icon made by `Roundicons <https://roundicons.com/>`__ from
+`www.flaticon.com <https://www.flaticon.com/>`__.

@@ -15,3 +15,7 @@ Download the latest version of Plover for your operating system from the [releas
 5. Restart Plover
 
 The same method can be used for updating and uninstalling the plugin.
+
+## Acknowledgements
+
+Icon made by [Roundicons](https://roundicons.com/) from [www.flaticon.com](https://www.flaticon.com/).
